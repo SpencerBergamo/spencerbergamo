@@ -10,6 +10,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Fira Code Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -17,8 +22,7 @@
         <section class="hero">
             <h1 class="hero-title">Hello, I'm Spencer</h1>
             <p class="hero-subtitle">
-                I build things that matter to me. Sometimes they look good too.
-
+                I'm a software developer.<br>I love building things :&#41;
             </p>
             <a href="#projects" class="cta-button">See My Work</a>
         </section>
@@ -26,59 +30,67 @@
         <section id="projects" class="section">
             <div class="container">
                 <h2>Projects</h2>
-                <div class="projects-grid">
+                <div class="projects-container">
                     <div class="project-card">
-                        <h3>Shutterspace</h3>
-                        <p>Shutter, Snap, & Share</p>
-                        <p>
-                            A collaborative mobile photo-sharing app that makes it simple for friends
-                            and family to collect photos and videos from shared experiences&mdash;vacations,
-                            events, or everyday moments&mdash;without the mess of group chats or scattered albums.
+                        <div class="project-hero">
+                            <img src="assets/images/opengraph.png" alt="Shutterspace Product Image" />
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Shutterspace</h3>
+                            <h4 class="project-subtitle">Shutter, Snap, & Share</h4>
+                            <p class="project-description">
+                                A collaborative mobile photo-sharing app that makes it simple for friends
+                                and family to collect photos and videos from shared experiences&mdash;vacations,
+                                events, or everyday moments&mdash;without the mess of group chats or scattered albums.
 
-                            <br><br>
+                                <br><br>
 
-                            I built Shutterspace to solve the problem of fragmented photo sharing and to create a
-                            more intentional, private way for people to preserver memories together. For me,
-                            this project reflects how I approach software development: I love to identify real-world
-                            friction, design with the user in mind, and build a scalable, modern solution.
-                        </p>
-                        <div class="project-links">
-                            <a href="#" class="project-link">View Project</a>
-                            <a href="#" class="project-link">GitHub</a>
+                                I built Shutterspace to solve the problem of fragmented photo sharing and to create a
+                                more intentional, private way for people to preserver memories together. For me,
+                                this project reflects how I approach software development: I love to identify real-world
+                                friction, design with the user in mind, and build a scalable, modern solution.
+                            </p>
+                            <div class="project-card-links">
+                                <img src="assets/brands/app-store.svg" alt="Download on the App Store"
+                                    class="project-store-icon" />
+                                <img src="assets/brands/play-store.png" alt="Get it on Google Play"
+                                    class="project-store-icon" />
+                            </div>
+                            <div class="project-card-footer">
+                                <img src="assets/brands/expo-logo.png" alt="Expo" class="project-techstack-icon" />
+                                <img src="assets/brands/rn-logo.png" alt="React Native"
+                                    class="project-techstack-icon" />
+                                <img src="assets/brands/ts-logo.png" alt="TypeScript" class="project-techstack-icon" />
+                                <img src="assets/brands/convex-logo.png" alt="Convex" class="project-techstack-icon" />
+                                <img src="assets/brands/cloudflare-logo.png" alt="Cloudflare R2"
+                                    class="project-techstack-icon" />
+                            </div>
                         </div>
                     </div>
-                    <div></div>
-                    <!-- <div class="project-card">
-                        <h3>Project Two</h3>
-                        <p>A brief description of your second project and the technologies used.</p>
-                        <div class="project-links">
-                            <a href="#" class="project-link">View Project</a>
-                            <a href="#" class="project-link">GitHub</a>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="section">
-            <div class="container">
-                <h2>Get In Touch</h2>
-                <p class="contact-text">
-                    I'm always interested in new opportunities and collaborations.
-                    Let's create something amazing together.
-                </p>
-                <div class="contact-links">
-                    <a href="mailto:hello@spencerbergamo.com" class="contact-link">Email</a>
-                    <a href="#" class="contact-link">LinkedIn</a>
-                    <a href="#" class="contact-link">GitHub</a>
-                </div>
-            </div>
-        </section>
+
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Spencer Bergamo. All rights reserved.</p>
+            <p>Spencer Bergamo</p>
+            <div class="footer-contact-icons">
+                <a href="mailto:spencer@spencerbergamo.com">
+                    <img src="assets/brands/alt-logo.png" alt="Email Me" />
+                </a>
+                <a href="https://github.com/spencerbergamo">
+                    <img src="assets/brands/github-logo.png" alt="GitHub" />
+                </a>
+                <a href="https://www.linkedin.com/in/spencerbergamo/">
+                    <img src="assets/brands/linkedin-logo.png" alt="LinkedIn" />
+                </a>
+                <a href="https://x.com/spencerbergamo">
+                    <img src="assets/brands/x-logo.png" alt="X" />
+                </a>
+            </div>
         </div>
     </footer>
 

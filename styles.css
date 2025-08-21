@@ -17,7 +17,7 @@ body {
 }
 
 /* Typography */
-h1, h2, h3 {
+/* h1, h2, h3 {
     font-weight: 600;
     line-height: 1.2;
 }
@@ -35,6 +35,19 @@ h3 {
 p {
     font-size: 1.1rem;
     font-weight: 300;
+    color: #666;
+} */
+
+h1, h2, h3 {
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+p {
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+    font-family: 'Fira Code', monospace;
     color: #666;
 }
 
@@ -147,82 +160,96 @@ header {
 }
 
 /* Projects Section */
-.projects-grid {
+/* .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
+} */
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    justify-content: center;
+    padding: 2rem;
 }
-
 .project-card {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
     background: #fff;
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+.project-hero {
+    display: flex;
+    flex: 1;
+}
+.project-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.project-content {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+}
+.project-title {
+    color: #333;
+}
+.project-subtitle {
+    color: #333;
+    font-size: 1.25rem;
+}
 .project-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
-
-.project-card h3 {
-    color: #333;
+.project-description {
     margin-bottom: 1rem;
 }
-
-.project-card p {
-    margin-bottom: 1.5rem;
-}
-
-.project-links {
+.project-card-links {
     display: flex;
+    flex-direction: row;
     gap: 1rem;
 }
-
-.project-link {
-    color: #667eea;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
+.project-store-icon {
+    width: auto;
+    height: 50px;
+    object-fit: contain;
 }
-
-.project-link:hover {
-    color: #764ba2;
-}
-
-/* Contact Section */
-.contact-text {
-    text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.contact-links {
+.project-card-footer {
     display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+.project-techstack-icon {
+    width: auto;
+    height: 20px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.footer-contact-icons {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
-    gap: 2rem;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
-.contact-link {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background: #667eea;
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.contact-link:hover {
-    background: #764ba2;
-    transform: translateY(-2px);
+.footer-contact-icons img {
+    width: auto;
+    height: 20px;
+    object-fit: contain;
+    cursor: pointer;
+    
 }
 
 /* Footer */
