@@ -20,18 +20,6 @@
 </head>
 
 <body>
-    <!-- Navigation -->
-    <!-- <nav class="nav">
-        <div class="nav-content">
-            <a href="#" class="nav-logo">Spencer Bergamo</a>
-            <div class="nav-links">
-                <a href="#work" class="nav-link">Work</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-        </div>
-    </nav> -->
-
     <main>
         <!-- New Hero Section -->
         <section class="container">
@@ -57,30 +45,41 @@
 
                 <!-- Interactive Menu -->
                 <!-- <div class="interactive-menu">
-                    <span data-section="about">About</span>
-                    <span data-section="work">Work</span>
-                    <span data-section="contact">Contact</span>
+                    <span data-section="projects">Projects</span>
                 </div> -->
 
                 <!-- Tech Stack -->
                 <div class="tech-stack">
-                    <p>My Go-To</p>
+                    <div class="tech-stack-header">
+                        <!-- <span class="tech-stack-symbol">⚡</span> -->
+                        <h3 class="tech-stack-title">My Go-To</h3>
+                    </div>
 
-                    <div class="tech-tag">
-                        <img src="assets/brands/rn-logo.png" alt="React/React Native" />
-                        <span>React</span>
-                    </div>
-                    <div class="tech-tag">
-                        <img src="assets/brands/ts-logo.png" alt="TypeScript" />
-                        <span>TypeScript</span>
-                    </div>
-                    <div class="tech-tag">
-                        <img src="assets/brands/expo-logo.png" alt="Expo" />
-                        <span>Expo</span>
-                    </div>
-                    <div class="tech-tag">
-                        <img src="assets/brands/nextjs.png" alt="Next.js" />
-                        <span>Next.js</span>
+                    <div class="tech-list">
+                        <div class="tech-item" data-tech="react">
+                            <div class="tech-icon">
+                                <img src="assets/brands/rn-logo.png" alt="React/React Native" />
+                            </div>
+                            <span class="tech-name">React</span>
+                        </div>
+                        <div class="tech-item" data-tech="typescript">
+                            <div class="tech-icon">
+                                <img src="assets/brands/ts-logo.png" alt="TypeScript" />
+                            </div>
+                            <span class="tech-name">TypeScript</span>
+                        </div>
+                        <div class="tech-item" data-tech="expo">
+                            <div class="tech-icon">
+                                <img src="assets/brands/expo-logo.png" alt="Expo" />
+                            </div>
+                            <span class="tech-name">Expo</span>
+                        </div>
+                        <div class="tech-item" data-tech="nextjs">
+                            <div class="tech-icon">
+                                <img src="assets/brands/nextjs.png" alt="Next.js" />
+                            </div>
+                            <span class="tech-name">Next.js</span>
+                        </div>
                     </div>
                 </div>
 
@@ -88,24 +87,40 @@
             <div class="divider"></div>
             <div class="content">
                 <!-- Greeting -->
-                <div id="hero" class="hero-title">
-                    <h1>Hello, I'm Spencer</h1>
-                    <p>I'm a software developer. <br> I love building things :&#41;</p>
+                <div id="hero" class="hero-section">
+                    <div class="greeting">
+                        <span class="greeting-prefix">$</span>
+                        <h1 class="greeting-text">
+                            <span class="greeting-hello">Hello, I'm</span>
+                            <span class="greeting-name">Spencer</span>
+                        </h1>
+                    </div>
+                    <div class="hero-description">
+                        <p class="hero-line">
+                            <span class="typing-cursor">></span>
+                            <span class="hero-text">I'm a software developer.</span>
+                        </p>
+                        <p class="hero-line">
+                            <span class="typing-cursor">></span>
+                            <span class="hero-text">I love building things :)</span>
+                        </p>
+                    </div>
                 </div>
 
-                <!-- About Section -->
-                <!-- <div id="about" class="content-section">
-                    <p>About</p>
-                </div> -->
-
-                <!-- Work Section -->
-                <div id="work" class="content-section">
-                    <div class="work-grid">
+                <!-- Projects Section -->
+                <div id="projects" class="content-section active">
+                    <div class="projects-list">
 
                         <article class="project-entry featured">
                             <div class="project-meta">
                                 <span class="project-date">2024</span>
-                                <span class="project-status">Live</span>
+                                <div class="project-status-container">
+                                    <span class="project-status">Live</span>
+                                    <a href="" class="project-github-link" target="_blank" rel="noopener noreferrer"
+                                        aria-label="GitHub/Shutterspace">
+                                        <img src="assets/brands/github-logo.png" alt="GitHub/Shutterspace" />
+                                    </a>
+                                </div>
                             </div>
                             <h3 class="project-title">Shutterspace</h3>
                             <p class="project-tagline">Collaborative photo sharing for life's moments</p>
@@ -153,32 +168,24 @@
                         </article>
                     </div>
                 </div>
-
-                <!-- Contact Section -->
-                <!-- <div id="contact" class="content-section">
-                    <p>
-                        Let's connect and build something together
-                        I'm always interested in new opportunities, collaborations, and conversations about technology.
-                    </p>
-                </div> -->
-
-
             </div>
         </section>
 
-        <!-- <footer class="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <p>&copy; 2024 Spencer Bergamo</p>
-                    <p class="footer-note">This portfolio grows with every project</p>
-                </div>
-            </div>
-        </footer> -->
+    </main>
+    <footer class="footer">
 
-        <script src="script.js"></script>
-        <script>
-            lucide.createIcons();
-        </script>
+        <div class="footer-content">
+            <p>&copy; 2024 Spencer Bergamo</p>
+            <p class="footer-note">This portfolio grows with every project</p>
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>
