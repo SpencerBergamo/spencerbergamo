@@ -4,97 +4,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spencer Bergamo</title>
-    <meta name="description" content="Spencer Bergamo - Portfolio">
+    <title>Spencer Bergamo - Software Developer</title>
+    <meta name="description" content="Spencer Bergamo - Software Developer building thoughtful solutions">
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Fira Code Fonts -->
+    <!-- Fira Code Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
-    <main>
-        <section class="hero">
-            <h1 class="hero-title">Hello, I'm Spencer</h1>
-            <p class="hero-subtitle">
-                I'm a software developer.<br>I love building things :&#41;
-            </p>
-            <a href="#projects" class="cta-button">See My Work</a>
-        </section>
-
-        <section id="projects" class="section">
-            <div class="container">
-                <h2>Projects</h2>
-                <div class="projects-container">
-                    <div class="project-card">
-                        <div class="project-hero">
-                            <img src="assets/images/opengraph.png" alt="Shutterspace Product Image" />
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Shutterspace</h3>
-                            <h4 class="project-subtitle">Shutter, Snap, & Share</h4>
-                            <p class="project-description">
-                                A collaborative mobile photo-sharing app that makes it simple for friends
-                                and family to collect photos and videos from shared experiences&mdash;vacations,
-                                events, or everyday moments&mdash;without the mess of group chats or scattered albums.
-
-                                <br><br>
-
-                                I built Shutterspace to solve the problem of fragmented photo sharing and to create a
-                                more intentional, private way for people to preserve memories together. For me,
-                                this project reflects how I approach software development: I love to identify real-world
-                                friction, design with the user in mind, and build a scalable, modern solution.
-                            </p>
-                            <div class="project-card-links">
-                                <img src="assets/brands/app-store.svg" alt="Download on the App Store"
-                                    class="project-store-icon" />
-                                <img src="assets/brands/play-store.png" alt="Get it on Google Play"
-                                    class="project-store-icon" />
-                            </div>
-                            <div class="project-card-footer">
-                                <img src="assets/brands/expo-logo.png" alt="Expo" class="project-techstack-icon" />
-                                <img src="assets/brands/rn-logo.png" alt="React Native"
-                                    class="project-techstack-icon" />
-                                <img src="assets/brands/ts-logo.png" alt="TypeScript" class="project-techstack-icon" />
-                                <img src="assets/brands/convex-logo.png" alt="Convex" class="project-techstack-icon" />
-                                <img src="assets/brands/cloudflare-logo.png" alt="Cloudflare R2"
-                                    class="project-techstack-icon" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>Spencer Bergamo</p>
-            <div class="footer-contact-icons">
-                <a href="mailto:spencer@spencerbergamo.com">
-                    <img src="assets/brands/alt-logo.png" alt="Email Me" />
-                </a>
-                <a href="https://github.com/spencerbergamo">
-                    <img src="assets/brands/github-logo.png" alt="GitHub" />
-                </a>
-                <a href="https://www.linkedin.com/in/spencerbergamo/">
-                    <img src="assets/brands/linkedin-logo.png" alt="LinkedIn" />
-                </a>
-                <a href="https://x.com/spencerbergamo">
-                    <img src="assets/brands/x-logo.png" alt="X" />
-                </a>
+    <!-- Navigation -->
+    <!-- <nav class="nav">
+        <div class="nav-content">
+            <a href="#" class="nav-logo">Spencer Bergamo</a>
+            <div class="nav-links">
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
         </div>
-    </footer>
+    </nav> -->
 
-    <script src="script.js"></script>
+    <main>
+        <!-- New Hero Section -->
+        <section class="container">
+            <div class="menu">
+                <div class="contact-info">
+                    <a href="https://github.com/SpencerBergamo" aria-label="GitHub/SpencerBergamo">
+                        <div class="contact-info-item">
+                            <img src="assets/brands/github-logo.png" alt="GitHub" />
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/spencerbergamo/" aria-label="LinkedIn/SpencerBergamo">
+                        <div class="contact-info-item">
+                            <img src="assets/brands/linkedin-logo.png" alt="LinkedIn" />
+                        </div>
+                    </a>
+                    <a href="https://x.com/spencerbergamo" aria-label="Twitter/@spencerbergamo">
+                        <div class="contact-info-item">
+                            <img src="assets/brands/x-logo.png" alt="Twitter" />
+                        </div>
+                    </a>
+
+                </div>
+
+                <!-- Interactive Menu -->
+                <!-- <div class="interactive-menu">
+                    <span data-section="about">About</span>
+                    <span data-section="work">Work</span>
+                    <span data-section="contact">Contact</span>
+                </div> -->
+
+                <!-- Tech Stack -->
+                <div class="tech-stack">
+                    <p>My Go-To</p>
+
+                    <div class="tech-tag">
+                        <img src="assets/brands/rn-logo.png" alt="React/React Native" />
+                        <span>React</span>
+                    </div>
+                    <div class="tech-tag">
+                        <img src="assets/brands/ts-logo.png" alt="TypeScript" />
+                        <span>TypeScript</span>
+                    </div>
+                    <div class="tech-tag">
+                        <img src="assets/brands/expo-logo.png" alt="Expo" />
+                        <span>Expo</span>
+                    </div>
+                    <div class="tech-tag">
+                        <img src="assets/brands/nextjs.png" alt="Next.js" />
+                        <span>Next.js</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="divider"></div>
+            <div class="content">
+                <!-- Greeting -->
+                <div id="hero" class="hero-title">
+                    <h1>Hello, I'm Spencer</h1>
+                    <p>I'm a software developer. <br> I love building things :&#41;</p>
+                </div>
+
+                <!-- About Section -->
+                <!-- <div id="about" class="content-section">
+                    <p>About</p>
+                </div> -->
+
+                <!-- Work Section -->
+                <div id="work" class="content-section">
+                    <div class="work-grid">
+
+                        <article class="project-entry featured">
+                            <div class="project-meta">
+                                <span class="project-date">2024</span>
+                                <span class="project-status">Live</span>
+                            </div>
+                            <h3 class="project-title">Shutterspace</h3>
+                            <p class="project-tagline">Collaborative photo sharing for life's moments</p>
+                            <p class="project-description">
+                                A mobile app that solves the chaos of group photo sharing. Built with React Native and
+                                TypeScript,
+                                it allows friends and family to collect memories in private, organized spaces.
+                            </p>
+                            <div class="project-tech">
+                                <div class="tech-tag">
+                                    <img src="assets/brands/expo-logo.png" alt="Expo" />
+                                    <span>Expo</span>
+                                </div>
+                                <div class="tech-tag">
+                                    <img src="assets/brands/convex-logo.png" alt="Convex" />
+                                    <span>Convex</span>
+                                </div>
+                                <div class="tech-tag">
+                                    <img src="assets/brands/cloudflare-logo.png" alt="Cloudflare" />
+                                    <span>Cloudflare</span>
+                                </div>
+                                <div class="tech-tag">
+                                    <img src="assets/brands/firebase-logo.png" alt="Firebase" />
+                                    <span>Firebase</span>
+                                </div>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link">App Store</a>
+                                <a href="#" class="project-link">Google Play</a>
+                            </div>
+                        </article>
+
+                        <!-- Future Projects Placeholder -->
+                        <article class="project-entry placeholder">
+                            <div class="project-meta">
+                                <span class="project-date">2025</span>
+                                <span class="project-status">Coming</span>
+                            </div>
+                            <h3 class="project-title">Next Project</h3>
+                            <p class="project-tagline">Currently exploring new ideas</p>
+                            <p class="project-description">
+                                This space will grow as I continue building and learning.
+                                Each project teaches me something new about creating meaningful software.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <!-- <div id="contact" class="content-section">
+                    <p>
+                        Let's connect and build something together
+                        I'm always interested in new opportunities, collaborations, and conversations about technology.
+                    </p>
+                </div> -->
+
+
+            </div>
+        </section>
+
+        <!-- <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p>&copy; 2024 Spencer Bergamo</p>
+                    <p class="footer-note">This portfolio grows with every project</p>
+                </div>
+            </div>
+        </footer> -->
+
+        <script src="script.js"></script>
+        <script>
+            lucide.createIcons();
+        </script>
 </body>
 
 </html>
