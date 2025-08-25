@@ -18,6 +18,8 @@
     
     --white: #FFFFFF;
     --black: #000000;
+
+    --cream: #FAFAFA;
 }
 
 /* Reset and Base Styles */
@@ -40,9 +42,19 @@ body {
     font-family: 'Fira Code', monospace;
     line-height: 1.6;
     color: var(--gray-800);
-    background-color: var(--white);
+    background-color: var(--cream);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    background-color: var(--hot-rod-red-light);
+    color: var(--hot-rod-red);
+}
+
+::-moz-selection {
+    background-color: var(--hot-rod-red-light);
+    color: var(--gray-900);
 }
 
 /* Typography */
@@ -79,7 +91,7 @@ p {
 .container {
     min-height: 100vh;
     max-width: 1200px;
-    background: var(--white);
+    /* background: var(--white); */
     margin: 0 auto;
     padding: 2rem;
     width: 100%;
