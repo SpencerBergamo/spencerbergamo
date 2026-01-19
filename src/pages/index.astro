@@ -1,6 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Navbar from "../components/Navbar.astro";
+import { Image } from "astro:assets";
+import expoLogo from "../assets/brands/expo-logo.png";
+import convexLogo from "../assets/brands/convex-logo.png";
+import cloudflareLogo from "../assets/brands/cloudflare-logo.png";
+import firebaseLogo from "../assets/brands/firebase-logo.png";
 ---
 
 <BaseLayout>
@@ -72,10 +77,7 @@ import Navbar from "../components/Navbar.astro";
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <img
-                                        src="/src/assets/brands/expo-logo.png"
-                                        alt="Expo"
-                                    />
+                                    <Image src={expoLogo} alt="Expo" />
                                     <span>Expo</span>
                                 </a>
                                 <a
@@ -84,10 +86,7 @@ import Navbar from "../components/Navbar.astro";
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <img
-                                        src="/src/assets/brands/convex-logo.png"
-                                        alt="Convex"
-                                    />
+                                    <Image src={convexLogo} alt="Convex" />
                                     <span>Convex</span>
                                 </a>
                                 <a
@@ -96,10 +95,7 @@ import Navbar from "../components/Navbar.astro";
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <img
-                                        src="/src/assets/brands/cloudflare-logo.png"
-                                        alt="Cloudflare"
-                                    />
+                                    <Image src={cloudflareLogo} alt="Cloudflare" />
                                     <span>Cloudflare</span>
                                 </a>
                                 <a
@@ -108,10 +104,7 @@ import Navbar from "../components/Navbar.astro";
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <img
-                                        src="/src/assets/brands/firebase-logo.png"
-                                        alt="Firebase"
-                                    />
+                                    <Image src={firebaseLogo} alt="Firebase" />
                                     <span>Firebase</span>
                                 </a>
                             </div>

@@ -1,5 +1,13 @@
 ---
 import { Menu, X } from "@lucide/astro";
+import { Image } from "astro:assets";
+import githubLogo from "../assets/brands/github-logo.png";
+import linkedinLogo from "../assets/brands/linkedin-logo.png";
+import xLogo from "../assets/brands/x-logo.png";
+import rnLogo from "../assets/brands/rn-logo.png";
+import tsLogo from "../assets/brands/ts-logo.png";
+import expoLogo from "../assets/brands/expo-logo.png";
+import nextjsLogo from "../assets/brands/nextjs.png";
 ---
 
 <nav class="navbar">
@@ -15,10 +23,7 @@ import { Menu, X } from "@lucide/astro";
                 aria-label="GitHub/SpencerBergamo"
             >
                 <div class="contact-info-item">
-                    <img
-                        src="/src/assets/brands/github-logo.png"
-                        alt="GitHub"
-                    />
+                    <Image src={githubLogo} alt="GitHub" />
                 </div>
             </a>
             <a
@@ -26,10 +31,7 @@ import { Menu, X } from "@lucide/astro";
                 aria-label="LinkedIn/SpencerBergamo"
             >
                 <div class="contact-info-item">
-                    <img
-                        src="/src/assets/brands/linkedin-logo.png"
-                        alt="LinkedIn"
-                    />
+                    <Image src={linkedinLogo} alt="LinkedIn" />
                 </div>
             </a>
             <a
@@ -37,7 +39,7 @@ import { Menu, X } from "@lucide/astro";
                 aria-label="Twitter/@spencerbergamo"
             >
                 <div class="contact-info-item">
-                    <img src="/src/assets/brands/x-logo.png" alt="Twitter" />
+                    <Image src={xLogo} alt="Twitter" />
                 </div>
             </a>
         </div>
@@ -54,8 +56,8 @@ import { Menu, X } from "@lucide/astro";
             <div class="tech-list">
                 <div class="tech-item" data-tech="react">
                     <div class="tech-icon">
-                        <img
-                            src="/src/assets/brands/rn-logo.png"
+                        <Image
+                            src={rnLogo}
                             alt="React/React Native"
                         />
                     </div>
@@ -63,8 +65,8 @@ import { Menu, X } from "@lucide/astro";
                 </div>
                 <div class="tech-item" data-tech="typescript">
                     <div class="tech-icon">
-                        <img
-                            src="/src/assets/brands/ts-logo.png"
+                        <Image
+                            src={tsLogo}
                             alt="TypeScript"
                         />
                     </div>
@@ -72,8 +74,8 @@ import { Menu, X } from "@lucide/astro";
                 </div>
                 <div class="tech-item" data-tech="expo">
                     <div class="tech-icon">
-                        <img
-                            src="/src/assets/brands/expo-logo.png"
+                        <Image
+                            src={expoLogo}
                             alt="Expo"
                         />
                     </div>
@@ -81,8 +83,8 @@ import { Menu, X } from "@lucide/astro";
                 </div>
                 <div class="tech-item" data-tech="nextjs">
                     <div class="tech-icon">
-                        <img
-                            src="/src/assets/brands/nextjs.png"
+                        <Image
+                            src={nextjsLogo}
                             alt="Next.js"
                         />
                     </div>
