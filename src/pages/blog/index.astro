@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => {
+  return data.draft !== true;
+});
+
+const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Blog - Spencer Bergamo" description="Personal documentation and thoughts on building software">
+    <main>
+        <section class="container">
+            <div class="menu">
+                <div class="contact-info">
+                    <a href="/" aria-label="Home">
+                        <div class="contact-info-item">
+                            <span style="font-size: 1.5rem;">←</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="content">
+                <div class="hero-section">
+                    <div class="greeting">
+                        <span class="greeting-prefix">$</span>
+                        <h1 class="greeting-text">
+                            <span class="greeting-name">Blog</span>
+                        </h1>
+                    </div>
+                    <div class="hero-description">
+                        <p class="hero-line">
+                            <span class="typing-cursor">></span>
+                            <span class="hero-text">Personal documentation & learnings</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="content-section active">
+                    <div class="projects-list">
+                        {sortedPosts.length === 0 ? (
+                            <article class="project-entry placeholder">
+                                <h3 class="project-title">Coming Soon</h3>
+                                <p class="project-description">
+                                    First blog post coming soon. Check back later!
+                                </p>
+                            </article>
+                        ) : (
+                            sortedPosts.map((post) => (
+                                <article class="project-entry">
+                                    <div class="project-meta">
+                                        <span class="project-date">
+                                            {post.data.date.toLocaleDateString('en-US', { 
+                                                year: 'numeric', 
+                                                month: 'short', 
+                                                day: 'numeric' 
+                                            })}
+                                        </span>
+                                    </div>
+                                    <a href={`/blog/${post.slug}`}>
+                                        <h3 class="project-title">{post.data.title}</h3>
+                                    </a>
+                                    <p class="project-description">{post.data.description}</p>
+                                    {post.data.tags && post.data.tags.length > 0 && (
+                                        <div class="project-tech">
+                                            {post.data.tags.map((tag) => (
+                                                <span class="tech-tag">
+                                                    <span>{tag}</span>
+                                                </span>
+                                            ))}
+                                        </div>
+                                    )}
+                                </article>
+                            ))
+                        )}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</BaseLayout>
+
+<style>
+    .tech-tag {
+        pointer-events: none;
+    }
+</style>

@@ -1,0 +1,111 @@
+---
+import { Menu, X } from "@lucide/astro";
+---
+
+<nav class="navbar">
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <Menu class="menu-icon" />
+        <X class="close-icon" />
+    </button>
+
+    <div class="navbar-content">
+        <div class="contact-info">
+            <a
+                href="https://github.com/SpencerBergamo"
+                aria-label="GitHub/SpencerBergamo"
+            >
+                <div class="contact-info-item">
+                    <img
+                        src="/src/assets/brands/github-logo.png"
+                        alt="GitHub"
+                    />
+                </div>
+            </a>
+            <a
+                href="https://www.linkedin.com/in/spencerbergamo/"
+                aria-label="LinkedIn/SpencerBergamo"
+            >
+                <div class="contact-info-item">
+                    <img
+                        src="/src/assets/brands/linkedin-logo.png"
+                        alt="LinkedIn"
+                    />
+                </div>
+            </a>
+            <a
+                href="https://x.com/spencerbergamo"
+                aria-label="Twitter/@spencerbergamo"
+            >
+                <div class="contact-info-item">
+                    <img src="/src/assets/brands/x-logo.png" alt="Twitter" />
+                </div>
+            </a>
+        </div>
+
+        <div class="menu-links">
+            <a href="/blog" class="menu-link">Blog</a>
+        </div>
+
+        <div class="tech-stack">
+            <div class="tech-stack-header">
+                <h3 class="tech-stack-title">My Go-To</h3>
+            </div>
+
+            <div class="tech-list">
+                <div class="tech-item" data-tech="react">
+                    <div class="tech-icon">
+                        <img
+                            src="/src/assets/brands/rn-logo.png"
+                            alt="React/React Native"
+                        />
+                    </div>
+                    <span class="tech-name">React</span>
+                </div>
+                <div class="tech-item" data-tech="typescript">
+                    <div class="tech-icon">
+                        <img
+                            src="/src/assets/brands/ts-logo.png"
+                            alt="TypeScript"
+                        />
+                    </div>
+                    <span class="tech-name">TypeScript</span>
+                </div>
+                <div class="tech-item" data-tech="expo">
+                    <div class="tech-icon">
+                        <img
+                            src="/src/assets/brands/expo-logo.png"
+                            alt="Expo"
+                        />
+                    </div>
+                    <span class="tech-name">Expo</span>
+                </div>
+                <div class="tech-item" data-tech="nextjs">
+                    <div class="tech-icon">
+                        <img
+                            src="/src/assets/brands/nextjs.png"
+                            alt="Next.js"
+                        />
+                    </div>
+                    <span class="tech-name">Next.js</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const toggle = document.querySelector(".mobile-menu-toggle");
+    const navbar = document.querySelector(".navbar");
+
+    toggle?.addEventListener("click", () => {
+        navbar?.classList.toggle("open");
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+        const target = e.target as HTMLElement;
+        if (!navbar?.contains(target)) {
+            navbar?.classList.remove("open");
+        }
+    });
+</script>

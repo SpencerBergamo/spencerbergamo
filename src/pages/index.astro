@@ -1,0 +1,150 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+---
+
+<BaseLayout>
+    <Navbar />
+    <main>
+        <div class="page-container">
+            <div class="content">
+                <div id="hero" class="hero-section">
+                    <div class="greeting">
+                        <span class="greeting-prefix">$</span>
+                        <h1 class="greeting-text">
+                            <span class="greeting-hello">Hello, I'm</span>
+                            <span class="greeting-name">Spencer</span>
+                        </h1>
+                    </div>
+                    <div class="hero-description">
+                        <p class="hero-line">
+                            <span class="typing-cursor">></span>
+                            <span class="hero-text"
+                                >I'm a software developer.</span
+                            >
+                        </p>
+                        <p class="hero-line">
+                            <span class="typing-cursor">></span>
+                            <span class="hero-text"
+                                >I love building things :)</span
+                            >
+                        </p>
+                    </div>
+                </div>
+
+                <div id="projects" class="content-section active">
+                    <div class="projects-list">
+                        <article class="project-entry featured">
+                            <div class="project-meta">
+                                <span class="project-date">2024</span>
+                                <a
+                                    href="https://shutterspace.app"
+                                    aria-label="Shutterspace on Web"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <div class="project-status-container">
+                                        <span class="project-status">Live</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <a
+                                href="https://shutterspace.app"
+                                aria-label="Shutterspace on Web"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <h3 class="project-title">Shutterspace</h3>
+                            </a>
+                            <p class="project-tagline">
+                                Collaborative photo sharing for life's moments
+                            </p>
+                            <p class="project-description">
+                                A mobile app that solves the chaos of group
+                                photo sharing. Built with React Native and
+                                TypeScript, it allows friends and family to
+                                collect memories in private, organized spaces.
+                            </p>
+                            <div class="project-tech">
+                                <a
+                                    href="https://expo.dev/"
+                                    class="tech-tag"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <img
+                                        src="/src/assets/brands/expo-logo.png"
+                                        alt="Expo"
+                                    />
+                                    <span>Expo</span>
+                                </a>
+                                <a
+                                    href="https://www.convex.dev/"
+                                    class="tech-tag"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <img
+                                        src="/src/assets/brands/convex-logo.png"
+                                        alt="Convex"
+                                    />
+                                    <span>Convex</span>
+                                </a>
+                                <a
+                                    href="https://www.cloudflare.com/"
+                                    class="tech-tag"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <img
+                                        src="/src/assets/brands/cloudflare-logo.png"
+                                        alt="Cloudflare"
+                                    />
+                                    <span>Cloudflare</span>
+                                </a>
+                                <a
+                                    href="https://firebase.google.com/"
+                                    class="tech-tag"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <img
+                                        src="/src/assets/brands/firebase-logo.png"
+                                        alt="Firebase"
+                                    />
+                                    <span>Firebase</span>
+                                </a>
+                            </div>
+                            <div class="project-links">
+                                <a
+                                    href="https://apps.apple.com/us/app/shutterspace/id6504692941"
+                                    class="project-link">App Store</a
+                                >
+                                <a
+                                    href="https://play.google.com/store/apps/details?id=org.bbtechnologies.shutterspace"
+                                    class="project-link">Google Play</a
+                                >
+                            </div>
+                        </article>
+
+                        <article class="project-entry placeholder">
+                            <div class="project-meta">
+                                <span class="project-date">2025</span>
+                                <span class="project-status">Coming</span>
+                            </div>
+                            <h3 class="project-title">Next Project</h3>
+                            <p class="project-tagline">
+                                Currently exploring new ideas
+                            </p>
+                            <p class="project-description">
+                                This space will grow as I continue building and
+                                learning. Each project teaches me something new
+                                about creating meaningful software.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</BaseLayout>
