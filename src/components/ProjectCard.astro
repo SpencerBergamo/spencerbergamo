@@ -1,0 +1,332 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface ProjectLink {
+    label: string;
+    href: string;
+}
+
+interface Props {
+    title: string;
+    /** Link to the product's site. Makes the whole card pressable. */
+    href?: string;
+    description: string;
+    tagline?: string;
+    links?: ProjectLink[];
+    /** Imported image (astro:assets) or a string path in /public. Use a string for gifs/videos. */
+    src?: ImageMetadata | string;
+    mediaType?: "image" | "video";
+    /** Optional poster image (string path) for videos. */
+    poster?: string;
+    alt?: string;
+}
+
+const {
+    title,
+    href,
+    description,
+    tagline,
+    links = [],
+    src,
+    mediaType = "image",
+    poster,
+    alt = title,
+} = Astro.props;
+
+const isStringSrc = typeof src === "string";
+---
+
+<article class:list={["project-card", { "is-pressable": href }]}>
+    <div class="project-media">
+        {
+            src ? (
+                mediaType === "video" && isStringSrc ? (
+                    <video
+                        src={src as string}
+                        poster={poster}
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                    />
+                ) : isStringSrc ? (
+                    <img src={src as string} alt={alt} loading="lazy" />
+                ) : (
+                    <Image src={src as ImageMetadata} alt={alt} />
+                )
+            ) : (
+                <div class="project-media-fallback" />
+            )
+        }
+    </div>
+
+    <div class="project-overlay"></div>
+
+    {
+        href && (
+            <a
+                class="project-card-cover"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit Site`}
+            />
+        )
+    }
+
+    <div class="project-content">
+        <h3 class="project-card-title">{title}</h3>
+        <div class="project-details">
+            <div class="project-details-inner">
+                {tagline && <p class="project-card-tagline">{tagline}</p>}
+                <p class="project-card-desc">{description}</p>
+                {
+                    links.length > 0 && (
+                        <div class="project-card-links">
+                            {links.map((link) => (
+                                <a
+                                    href={link.href}
+                                    class="project-card-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {link.label}
+                                </a>
+                            ))}
+                        </div>
+                    )
+                }
+            </div>
+        </div>
+    </div>
+</article>
+
+<style>
+    .project-card {
+        position: relative;
+        aspect-ratio: 4 / 3;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 1px solid var(--gray-200);
+        background: var(--gray-900);
+        isolation: isolate;
+    }
+
+    .project-card.is-pressable {
+        cursor: pointer;
+    }
+
+    /* Media layer (sits at the bottom of the stack) */
+    .project-media,
+    .project-media :global(img),
+    .project-media video,
+    .project-media-fallback {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .project-media :global(img),
+    .project-media video {
+        object-fit: cover;
+        transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .project-media-fallback {
+        background: linear-gradient(
+            135deg,
+            var(--hot-rod-red) 0%,
+            var(--hot-rod-red-dark) 100%
+        );
+    }
+
+    .project-card:hover .project-media :global(img),
+    .project-card:hover .project-media video {
+        transform: scale(1.05);
+    }
+
+    /* Darkening overlay */
+    .project-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.55) 45%,
+            rgba(0, 0, 0, 0) 100%
+        );
+        opacity: 0.4;
+        transition: opacity 0.4s ease;
+    }
+
+    .project-card:hover .project-overlay,
+    .project-card:focus-within .project-overlay {
+        opacity: 1;
+    }
+
+    /* Stretched link: makes the whole card pressable */
+    .project-card-cover {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    /* Tooltip shown while hovering a pressable card */
+    .project-card-cover[data-tooltip]::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: 0.85rem;
+        right: 0.85rem;
+        z-index: 4;
+        padding: 0.3rem 0.6rem;
+        border-radius: 6px;
+        background: rgba(0, 0, 0, 0.8);
+        color: var(--white);
+        font-size: 0.72rem;
+        font-weight: 600;
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(-4px);
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease;
+    }
+
+    .project-card:hover .project-card-cover[data-tooltip]::after {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Content sits above the cover, but lets clicks fall through to it
+       (except on real links, which re-enable pointer events). */
+    .project-content {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        padding: 1.25rem;
+        color: var(--white);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 0;
+        pointer-events: none;
+    }
+
+    .project-card-title {
+        color: var(--white);
+        font-size: 1.2rem;
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    /* Smooth reveal: animate real content height via grid rows */
+    .project-details {
+        display: grid;
+        grid-template-rows: 0fr;
+        opacity: 0;
+        transition:
+            grid-template-rows 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 0.4s ease;
+    }
+
+    .project-card:hover .project-details,
+    .project-card:focus-within .project-details {
+        grid-template-rows: 1fr;
+        opacity: 1;
+    }
+
+    .project-details-inner {
+        min-height: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        transform: translateY(8px);
+        transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Spacing below the title lives on a child so the grid row can fully
+       collapse to 0 at rest (padding on the inner would leave a sliver). */
+    .project-details-inner > :first-child {
+        margin-top: 0.6rem;
+    }
+
+    .project-card:hover .project-details-inner,
+    .project-card:focus-within .project-details-inner {
+        transform: translateY(0);
+    }
+
+    .project-card-tagline {
+        color: var(--white);
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin: 0;
+        opacity: 0.95;
+    }
+
+    .project-card-desc {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.88rem;
+        line-height: 1.55;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .project-card-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 0.2rem;
+        pointer-events: auto;
+    }
+
+    .project-card-link {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--white);
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        border-radius: 8px;
+        padding: 0.4rem 0.85rem;
+        transition: all 0.2s ease;
+    }
+
+    .project-card-link:hover {
+        background: var(--white);
+        color: var(--gray-900);
+        border-color: var(--white);
+    }
+
+    /* Touch / no-hover devices: reveal content by default */
+    @media (hover: none) {
+        .project-overlay {
+            opacity: 1;
+        }
+
+        .project-details {
+            grid-template-rows: 1fr;
+            opacity: 1;
+        }
+
+        .project-details-inner {
+            transform: none;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .project-media:
+            global(img),
+            .project-media video,
+            .project-overlay,
+            .project-details,
+            .project-details-inner;
+    }
+</style>
