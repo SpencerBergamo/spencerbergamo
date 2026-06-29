@@ -1,58 +1,94 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Navbar from '../../components/Navbar.astro';
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
+import Navbar from "../../components/Navbar.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const allPosts = await getCollection('blog', ({ data }) => {
-  return data.draft !== true;
+const allPosts = await getCollection("blog", ({ data }) => {
+    return data.draft !== true;
 });
 
-const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const sortedPosts = allPosts.sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 ---
 
-<BaseLayout title="Blog — Spencer Bergamo" description="Notes and writing on hardware, software, and robotics.">
+<BaseLayout
+    title="Blog — Spencer Bergamo"
+    description="Notes and writing on hardware, software, and robotics."
+>
     <Navbar />
     <main>
         <div class="page-container">
-            <section class="hero">
+            <!-- <section class="hero">
                 <h1 class="hero-title">Writing</h1>
                 <p class="hero-subtitle">
                     Notes on <span class="accent">hardware</span>,
                     <span class="accent">software</span>, and
                     <span class="accent">robotics</span>.
                 </p>
-            </section>
+            </section> -->
+            <a href="/" class="back-link">&larr; Home</a>
 
             <section class="section">
-                {sortedPosts.length === 0 ? (
-                    <div class="empty-state">
-                        <p>No posts yet — check back soon.</p>
-                    </div>
-                ) : (
-                    <div class="post-list">
-                        {sortedPosts.map((post) => (
-                            <a href={`/blog/${post.slug}`} class="post-item">
-                                <p class="post-date">
-                                    {post.data.date.toLocaleDateString('en-US', {
-                                        year: 'numeric',
-                                        month: 'short',
-                                        day: 'numeric'
-                                    })}
-                                </p>
-                                <h3 class="post-title">{post.data.title}</h3>
-                                <p class="post-desc">{post.data.description}</p>
-                                {post.data.tags && post.data.tags.length > 0 && (
-                                    <div class="tag-row">
-                                        {post.data.tags.map((tag) => (
-                                            <span class="tag">{tag}</span>
-                                        ))}
-                                    </div>
-                                )}
-                            </a>
-                        ))}
-                    </div>
-                )}
+                {
+                    sortedPosts.length === 0 ? (
+                        <div class="empty-state">
+                            <p>No posts yet — check back soon.</p>
+                        </div>
+                    ) : (
+                        <div class="post-list">
+                            {sortedPosts.map((post) => (
+                                <a
+                                    href={`/blog/${post.slug}`}
+                                    class="post-item"
+                                >
+                                    <p class="post-date">
+                                        {post.data.date.toLocaleDateString(
+                                            "en-US",
+                                            {
+                                                year: "numeric",
+                                                month: "short",
+                                                day: "numeric",
+                                            },
+                                        )}
+                                    </p>
+                                    <h3 class="post-title">
+                                        {post.data.title}
+                                    </h3>
+                                    <p class="post-desc">
+                                        {post.data.description}
+                                    </p>
+                                    {post.data.tags &&
+                                        post.data.tags.length > 0 && (
+                                            <div class="tag-row">
+                                                {post.data.tags.map((tag) => (
+                                                    <span class="tag">
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        )}
+                                </a>
+                            ))}
+                        </div>
+                    )
+                }
             </section>
         </div>
     </main>
 </BaseLayout>
+
+<style>
+    .back-link {
+        display: inline-block;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--hot-rod-red);
+        transition: opacity 0.2s ease;
+    }
+
+    .back-link:hover {
+        opacity: 0.7;
+    }
+</style>

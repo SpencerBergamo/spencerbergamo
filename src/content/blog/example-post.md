@@ -1,9 +1,9 @@
 ---
-title: "Getting Started with My Blog"
-description: "This is an example blog post to demonstrate the new blog functionality on my portfolio site."
-date: 2026-01-19
+title: "Karnaugh Map Solver"
+description: "K-Map Solver"
+date: 2026-06-28
 tags: ["meta", "astro"]
-draft: false
+draft: true
 ---
 
 ## Welcome to My Blog
