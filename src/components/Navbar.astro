@@ -1,13 +1,17 @@
 ---
 import { Menu, X } from "@lucide/astro";
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 import githubLogo from "../assets/brands/github-logo.png";
 import linkedinLogo from "../assets/brands/linkedin-logo.png";
 import xLogo from "../assets/brands/x-logo.png";
-import rnLogo from "../assets/brands/rn-logo.png";
-import tsLogo from "../assets/brands/ts-logo.png";
-import expoLogo from "../assets/brands/expo-logo.png";
-import nextjsLogo from "../assets/brands/nextjs.png";
+
+const posts = await getCollection("blog", ({ data }) => data.draft !== true);
+const sortedPosts = posts.sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const currentPath = Astro.url.pathname.replace(/\/$/, "");
 ---
 
 <nav class="navbar">
@@ -17,6 +21,40 @@ import nextjsLogo from "../assets/brands/nextjs.png";
     </button>
 
     <div class="navbar-content">
+        <div class="navbar-brand">
+            <a href="/" class="brand-link">
+                <span class="brand-dot"></span>
+                <span class="brand-name">Spencer Bergamo</span>
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <p class="nav-label">Writing</p>
+            <nav class="nav-links" aria-label="Blog">
+                {
+                    sortedPosts.length === 0 ? (
+                        <span class="nav-empty">No posts yet</span>
+                    ) : (
+                        sortedPosts.map((post) => (
+                            <a
+                                href={`/blog/${post.slug}`}
+                                class:list={[
+                                    "nav-link",
+                                    {
+                                        active:
+                                            currentPath ===
+                                            `/blog/${post.slug}`,
+                                    },
+                                ]}
+                            >
+                                {post.data.title}
+                            </a>
+                        ))
+                    )
+                }
+            </nav>
+        </div>
+
         <div class="contact-info">
             <a
                 href="https://github.com/SpencerBergamo"
@@ -43,55 +81,6 @@ import nextjsLogo from "../assets/brands/nextjs.png";
                 </div>
             </a>
         </div>
-
-        <div class="menu-links">
-            <a href="/blog" class="menu-link">Blog</a>
-        </div>
-
-        <div class="tech-stack">
-            <div class="tech-stack-header">
-                <h3 class="tech-stack-title">My Go-To</h3>
-            </div>
-
-            <div class="tech-list">
-                <div class="tech-item" data-tech="react">
-                    <div class="tech-icon">
-                        <Image
-                            src={rnLogo}
-                            alt="React/React Native"
-                        />
-                    </div>
-                    <span class="tech-name">React</span>
-                </div>
-                <div class="tech-item" data-tech="typescript">
-                    <div class="tech-icon">
-                        <Image
-                            src={tsLogo}
-                            alt="TypeScript"
-                        />
-                    </div>
-                    <span class="tech-name">TypeScript</span>
-                </div>
-                <div class="tech-item" data-tech="expo">
-                    <div class="tech-icon">
-                        <Image
-                            src={expoLogo}
-                            alt="Expo"
-                        />
-                    </div>
-                    <span class="tech-name">Expo</span>
-                </div>
-                <div class="tech-item" data-tech="nextjs">
-                    <div class="tech-icon">
-                        <Image
-                            src={nextjsLogo}
-                            alt="Next.js"
-                        />
-                    </div>
-                    <span class="tech-name">Next.js</span>
-                </div>
-            </div>
-        </div>
     </div>
 </nav>
 
@@ -99,7 +88,8 @@ import nextjsLogo from "../assets/brands/nextjs.png";
     const toggle = document.querySelector(".mobile-menu-toggle");
     const navbar = document.querySelector(".navbar");
 
-    toggle?.addEventListener("click", () => {
+    toggle?.addEventListener("click", (e) => {
+        e.stopPropagation();
         navbar?.classList.toggle("open");
     });
 

@@ -1,143 +1,132 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { Bot, Camera, Code2, Cpu, Rocket } from "@lucide/astro";
 import Navbar from "../components/Navbar.astro";
-import { Image } from "astro:assets";
-import expoLogo from "../assets/brands/expo-logo.png";
-import convexLogo from "../assets/brands/convex-logo.png";
-import cloudflareLogo from "../assets/brands/cloudflare-logo.png";
-import firebaseLogo from "../assets/brands/firebase-logo.png";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const focusAreas = [
+    {
+        icon: Cpu,
+        title: "Hardware",
+        description:
+            "Designing and tinkering with circuits, microcontrollers, and embedded systems.",
+    },
+    {
+        icon: Code2,
+        title: "Software",
+        description:
+            "Building full-stack apps and tools with a focus on clean, reliable code.",
+    },
+    {
+        icon: Bot,
+        title: "Robotics",
+        description:
+            "Bringing hardware and software together to make things move and sense.",
+    },
+];
 ---
 
 <BaseLayout>
     <Navbar />
     <main>
         <div class="page-container">
-            <div class="content">
-                <div id="hero" class="hero-section">
-                    <div class="greeting">
-                        <span class="greeting-prefix">$</span>
-                        <h1 class="greeting-text">
-                            <span class="greeting-hello">Hello, I'm</span>
-                            <span class="greeting-name">Spencer</span>
-                        </h1>
-                    </div>
-                    <div class="hero-description">
-                        <p class="hero-line">
-                            <span class="typing-cursor">></span>
-                            <span class="hero-text"
-                                >I'm a software developer.</span
-                            >
-                        </p>
-                        <p class="hero-line">
-                            <span class="typing-cursor">></span>
-                            <span class="hero-text"
-                                >I love building things :)</span
-                            >
-                        </p>
-                    </div>
-                </div>
+            <section class="hero">
+                <h1 class="hero-title">Spencer Bergamo</h1>
+                <p class="hero-subtitle">
+                    I build across <span class="accent">hardware</span>,
+                    <span class="accent">software</span>, and
+                    <span class="accent">robotics</span>.
+                </p>
+                <p class="hero-text">
+                    I'm a developer and maker who loves bringing ideas to life —
+                    from circuit boards and embedded firmware to web apps and
+                    autonomous systems. Here are a few of the projects I'm most
+                    proud of.
+                </p>
+            </section>
 
-                <div id="projects" class="content-section active">
-                    <div class="projects-list">
-                        <article class="project-entry featured">
-                            <div class="project-meta">
-                                <span class="project-date">2024</span>
+            <!-- <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">What I do</h2>
+                </div>
+                <div class="focus-grid">
+                    {
+                        focusAreas.map((area) => (
+                            <div class="focus-card">
+                                <span class="focus-icon">
+                                    <area.icon />
+                                </span>
+                                <h3>{area.title}</h3>
+                                <p>{area.description}</p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </section> -->
+
+            <section class="section">
+                <!-- <div class="section-header">
+                    <h2 class="section-title">Featured projects</h2>
+                </div> -->
+                <div class="gallery">
+                    <article class="gallery-card">
+                        <div class="gallery-thumb">
+                            <Camera />
+                        </div>
+                        <div class="gallery-body">
+                            <h3 class="gallery-title">Shutterspace</h3>
+                            <p class="gallery-tagline">
+                                Collaborative Photo Albums
+                            </p>
+                            <p class="gallery-desc">
+                                A mobile app that solves the chaos of group
+                                photo sharing — friends and family collect
+                                memories in private, organized spaces.
+                            </p>
+                            <div class="tag-row">
+                                <span class="tag">Expo</span>
+                                <span class="tag">Convex</span>
+                                <span class="tag">Cloudflare</span>
+                                <span class="tag">Firebase</span>
+                            </div>
+                            <div class="card-links">
                                 <a
                                     href="https://shutterspace.app"
-                                    aria-label="Shutterspace on Web"
+                                    class="card-link"
                                     target="_blank"
-                                    rel="noopener noreferrer"
+                                    rel="noopener noreferrer">Visit</a
                                 >
-                                    <div class="project-status-container">
-                                        <span class="project-status">Live</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <a
-                                href="https://shutterspace.app"
-                                aria-label="Shutterspace on Web"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <h3 class="project-title">Shutterspace</h3>
-                            </a>
-                            <p class="project-tagline">
-                                Collaborative photo sharing for life's moments
-                            </p>
-                            <p class="project-description">
-                                A mobile app that solves the chaos of group
-                                photo sharing. Built with React Native and
-                                TypeScript, it allows friends and family to
-                                collect memories in private, organized spaces.
-                            </p>
-                            <div class="project-tech">
-                                <a
-                                    href="https://expo.dev/"
-                                    class="tech-tag"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <Image src={expoLogo} alt="Expo" />
-                                    <span>Expo</span>
-                                </a>
-                                <a
-                                    href="https://www.convex.dev/"
-                                    class="tech-tag"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <Image src={convexLogo} alt="Convex" />
-                                    <span>Convex</span>
-                                </a>
-                                <a
-                                    href="https://www.cloudflare.com/"
-                                    class="tech-tag"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <Image src={cloudflareLogo} alt="Cloudflare" />
-                                    <span>Cloudflare</span>
-                                </a>
-                                <a
-                                    href="https://firebase.google.com/"
-                                    class="tech-tag"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <Image src={firebaseLogo} alt="Firebase" />
-                                    <span>Firebase</span>
-                                </a>
-                            </div>
-                            <div class="project-links">
                                 <a
                                     href="https://apps.apple.com/us/app/shutterspace/id6504692941"
-                                    class="project-link">App Store</a
+                                    class="card-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer">App Store</a
                                 >
                                 <a
                                     href="https://play.google.com/store/apps/details?id=org.bbtechnologies.shutterspace"
-                                    class="project-link">Google Play</a
+                                    class="card-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer">Google Play</a
                                 >
                             </div>
-                        </article>
+                        </div>
+                    </article>
 
-                        <article class="project-entry placeholder">
-                            <div class="project-meta">
-                                <span class="project-date">2025</span>
-                                <span class="project-status">Coming</span>
-                            </div>
-                            <h3 class="project-title">Next Project</h3>
-                            <p class="project-tagline">
-                                Currently exploring new ideas
+                    <article class="gallery-card placeholder">
+                        <div class="gallery-thumb">
+                            <Rocket />
+                        </div>
+                        <div class="gallery-body">
+                            <h3 class="gallery-title">More on the way</h3>
+                            <p class="gallery-tagline">Hardware & robotics</p>
+                            <p class="gallery-desc">
+                                I'm currently building out new hardware and
+                                robotics projects. This gallery will grow as
+                                they come together.
                             </p>
-                            <p class="project-description">
-                                This space will grow as I continue building and
-                                learning. Each project teaches me something new
-                                about creating meaningful software.
-                            </p>
-                        </article>
-                    </div>
+                        </div>
+                    </article>
                 </div>
-            </div>
+            </section>
         </div>
     </main>
 </BaseLayout>

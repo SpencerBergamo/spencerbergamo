@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -14,110 +15,96 @@ const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout title={`${post.data.title} — Spencer Bergamo`} description={post.data.description}>
+    <Navbar />
     <main>
-        <section class="container">
-            <div class="menu">
-                <div class="contact-info">
-                    <a href="/blog" aria-label="Back to Blog">
-                        <div class="contact-info-item">
-                            <span style="font-size: 1.5rem;">←</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="divider"></div>
-            
-            <div class="content">
-                <article class="blog-post">
-                    <header class="blog-header">
-                        <h1 class="blog-title">{post.data.title}</h1>
-                        <div class="blog-meta">
-                            <time datetime={post.data.date.toISOString()}>
-                                {post.data.date.toLocaleDateString('en-US', { 
-                                    year: 'numeric', 
-                                    month: 'long', 
-                                    day: 'numeric' 
-                                })}
-                            </time>
-                            {post.data.tags && post.data.tags.length > 0 && (
-                                <div class="blog-tags">
-                                    {post.data.tags.map((tag) => (
-                                        <span class="blog-tag">{tag}</span>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    </header>
-                    <div class="blog-content">
-                        <Content />
+        <div class="page-container">
+            <article class="blog-post">
+                <a href="/blog" class="back-link">&larr; All posts</a>
+                <header class="blog-header">
+                    <h1 class="blog-title">{post.data.title}</h1>
+                    <div class="blog-meta">
+                        <time datetime={post.data.date.toISOString()}>
+                            {post.data.date.toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                            })}
+                        </time>
+                        {post.data.tags && post.data.tags.length > 0 && (
+                            <div class="tag-row">
+                                {post.data.tags.map((tag) => (
+                                    <span class="tag">{tag}</span>
+                                ))}
+                            </div>
+                        )}
                     </div>
-                </article>
-            </div>
-        </section>
+                </header>
+                <div class="blog-content">
+                    <Content />
+                </div>
+            </article>
+        </div>
     </main>
 </BaseLayout>
 
 <style>
     .blog-post {
         max-width: 70ch;
-        margin: 0 auto;
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--hot-rod-red);
+        transition: opacity 0.2s ease;
+    }
+
+    .back-link:hover {
+        opacity: 0.7;
     }
 
     .blog-header {
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--gray-200);
     }
 
     .blog-title {
         font-size: 2.5rem;
         font-weight: 700;
         margin-bottom: 1rem;
-        color: #DC2626;
         line-height: 1.2;
     }
 
     .blog-meta {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
-        color: #71717A;
-        font-size: 0.95rem;
-    }
-
-    .blog-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-
-    .blog-tag {
-        background: rgba(220, 38, 38, 0.1);
-        color: #DC2626;
-        padding: 0.25rem 0.75rem;
-        border-radius: 4px;
-        font-size: 0.85rem;
-        font-weight: 500;
+        gap: 0.75rem;
+        color: var(--gray-500);
+        font-size: 0.9rem;
     }
 
     .blog-content {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         line-height: 1.8;
-        color: #E4E4E7;
+        color: var(--gray-700);
     }
 
     .blog-content :global(h2) {
-        font-size: 1.8rem;
-        font-weight: 600;
+        font-size: 1.6rem;
+        font-weight: 700;
         margin: 2.5rem 0 1rem;
-        color: #F4F4F5;
+        color: var(--gray-900);
     }
 
     .blog-content :global(h3) {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         font-weight: 600;
         margin: 2rem 0 0.75rem;
-        color: #F4F4F5;
+        color: var(--gray-900);
     }
 
     .blog-content :global(p) {
@@ -125,40 +112,43 @@ const { Content } = await post.render();
     }
 
     .blog-content :global(a) {
-        color: #DC2626;
+        color: var(--hot-rod-red);
         text-decoration: underline;
-        transition: opacity 0.2s;
+        transition: opacity 0.2s ease;
     }
 
     .blog-content :global(a:hover) {
-        opacity: 0.8;
+        opacity: 0.75;
     }
 
     .blog-content :global(code) {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 0.2rem 0.4rem;
-        border-radius: 3px;
+        background: var(--gray-100);
+        padding: 0.15rem 0.4rem;
+        border-radius: 4px;
         font-size: 0.9em;
-        font-family: 'Fira Code', monospace;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        color: var(--gray-800);
     }
 
     .blog-content :global(pre) {
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--gray-900);
+        color: var(--gray-100);
         padding: 1.5rem;
-        border-radius: 8px;
+        border-radius: 10px;
         overflow-x: auto;
         margin: 1.5rem 0;
-        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .blog-content :global(pre code) {
         background: none;
         padding: 0;
+        color: inherit;
     }
 
-    .blog-content :global(ul), .blog-content :global(ol) {
+    .blog-content :global(ul),
+    .blog-content :global(ol) {
         margin: 1.5rem 0;
-        padding-left: 2rem;
+        padding-left: 1.5rem;
     }
 
     .blog-content :global(li) {
@@ -166,17 +156,17 @@ const { Content } = await post.render();
     }
 
     .blog-content :global(blockquote) {
-        border-left: 4px solid #DC2626;
+        border-left: 4px solid var(--hot-rod-red);
         padding-left: 1.5rem;
         margin: 1.5rem 0;
         font-style: italic;
-        color: #A1A1AA;
+        color: var(--gray-500);
     }
 
     .blog-content :global(img) {
         max-width: 100%;
         height: auto;
-        border-radius: 8px;
+        border-radius: 10px;
         margin: 2rem 0;
     }
 
